@@ -100,3 +100,7 @@ enable_nav: true
 nav_item:
   - { url: '/', text: 'Home' }
   - { url: '/about', text: 'About' }
+
+kramdown:
+  input: GFM          # or 'kramdown'
+  math_engine: mathjax

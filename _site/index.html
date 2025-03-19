@@ -184,12 +184,6 @@
                   </path>
                 </svg>Paper
               </button></a>
-            <a href="gallery_0.html"><button class="btn btn-default btn-lg">
-                <svg style="width:24px;height:24px;margin-right:8px" width="24px" height="24px" viewBox="0 0 375 531" ,
-                  fill="currentColor">
-                  <polygon stroke="currentColor" points="0.5,0.866 459.5,265.87 0.5,530.874 "></polygon>
-                </svg>Gallery
-              </button></a>
             <a href="https://gohyojun15.github.io/VideoRFSplat"><button class="btn btn-default btn-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;margin-right:8px"
                   viewBox="0 0 24 24" fill="currentColor">
@@ -242,18 +236,15 @@
     <div class="container">
   <div class="content">
     
-      <h3 class="title">TL;DR: <strong>VideoRFSplat</strong> is a direct 3DGS generation model for real-world scenes from given text prompts, which leverages a video generation model's prior.</h3>
+    <h3 class="title">TL;DR: <strong>VideoRFSplat</strong> is a direct 3DGS generation model for real-world scenes from given text prompts, which leverages a video generation model's prior.</h3>
     
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 1em;
-      "
-    >
+      ">
         
       <img src="files/teasure.png" style="width: 100%" />
         
@@ -261,34 +252,27 @@
 
     <p class="excerpt"></p>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
   </div>
 </div>
-
   </div>
 </div>
 
@@ -315,51 +299,43 @@
     <div class="container">
   <div class="content">
     
-      <h3 class="title">Generated 3DGS</h3>
+    <h3 class="title">Generated 3DGS</h3>
     
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 1em;
-      "
-    >
-      
+      ">
+         
+      <p class="excerpt">These are the generated 3DGS from VideoRFSplat. Prompts are generated from GPT-4o.</p>
+       
     </div>
 
     <p class="excerpt"></p>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
   </div>
 </div>
-
   </div>
 </div>
 
@@ -455,6 +431,34 @@
             </div>
         </div>
     </div>
+    <div class="row post-row">
+        <div class="container">
+            <div class="content">
+                <div id="wrapper"
+                    style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/storm-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A turbulent ocean storm with crashing waves, lightning illuminating the dark clouds.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/treasure-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A wooden treasure chest with iron reinforcements.
+
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/snowy-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">Snowy mountain peaks towering over a dense evergreen forest, with a frozen lake reflecting the golden hues of the setting sun.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
           
           
@@ -477,51 +481,41 @@
     <div class="container">
   <div class="content">
     
-      <h3 class="title">Abstract</h3>
+    <h3 class="title">Abstract</h3>
     
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 1em;
-      "
-    >
+      ">
       
     </div>
 
     <p class="excerpt">We propose VideoRFSplat, a direct text-to-3D model leveraging a video generation model to generate realistic 3D Gaussian Splatting (3DGS) for unbounded real-world scenes. To generate diverse camera poses and unbounded spatial extent of real-world scenes, while ensuring generalization to arbitrary text prompts, previous methods fine-tune 2D generative models to jointly model camera poses and multi-view images. However, these methods suffer from instability when extending 2D generative models to joint modeling due to the modality gap, which necessitates additional models to stabilize training and inference. In this work, we propose an architecture and a sampling strategy to jointly model multi-view images and camera poses when fine-tuning a video generation model. Our core idea is a dual-stream architecture that attaches a dedicated pose generation model alongside a pre-trained video generation model via communication blocks, generating multi-view images and camera poses through separate streams. This design reduces interference between the pose and image modalities. Additionally, we propose an asynchronous sampling strategy that denoises camera poses faster than multi-view images, allowing rapidly denoised poses to condition multi-view generation, reducing mutual ambiguity and enhancing cross-modal consistency. Trained on multiple large-scale real-world datasets (RealEstate10K, MVImgNet, DL3DV-10K, ACID), VideoRFSplat outperforms existing text-to-3D direct generation methods that heavily depend on post-hoc refinement via score distillation sampling, achieving superior results without such refinement.</p>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
   </div>
 </div>
-
   </div>
 </div>
 
@@ -543,55 +537,45 @@
   <div class="row post-row text-left"><div class="container">
   <div class="content">
     
-      <h3 class="title">Geometric Rewards</h3>
+    <h3 class="title">VideoRFSplat: Architecture Overview</h3>
     
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 1em;
-      "
-    >
+      ">
+         
+      <p class="excerpt">In this work, we improve the joint distribution modeling of multi-view images and camera poses for text-to-3D generation by leveraging video generation models. Previous approaches to direct 3DGS generation for real-world scenes jointly generate multi-view images and diverse camera poses using 2D generative models, eliminating the need for user-specified viewpoints. However, we found that parameter-sharing schemes between these modalities, such as channel concatenation, degrade text-prompt coherence and generation quality. To address this, we propose a dual-stream architecture that integrates a dedicated pose generation model alongside a pre-trained video generation model via communication blocks (see below figure). By generating multi-view images and camera poses in separate streams, our approach minimizes interference between modalities, improving both consistency and fidelity. Then, gaussian splatting decoder based on feedforward 3DGS methods decodes 3DGS from generated multi-view image latents and camera poses.</p>
+         
+      <img src="files/overview.png" style="width: 100%" />
         
-      <img src="files/overview.jpg" style="width: 100%" />
-           
-      <p class="excerpt"> Our reward functions assess the geometric consistency of intermediate generated video frames by computing the feature similarity of upscaled DINO features. (a) GS-MEt3R evaluates feature similarity between the original video frames and their corresponding rendered images from 3DGS. (b) Dyn-MEt3R unprojects background features from half of the video frames and reprojecting them onto the remaining frames to compute feature similarity.</p>
-       
     </div>
 
     <p class="excerpt"></p>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
   </div>
-</div>
-</div>
+</div></div>
 </div>
 
           
@@ -618,56 +602,114 @@
   <div class="row post-row text-right"><div class="container">
   <div class="content">
     
-      <h3 class="title">Geometric Steering</h3>
+    <h3 class="title">VideoRFSplat: Improved Sampling with Asynchronous Sampling</h3>
     
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 1em;
-      "
-    >
+      ">
+         
+      <p class="excerpt">Also, previous works that jointly generate multi-view images and camera poses often suffer from early-stage "mutual ambiguity," where each modality (pose vs. image) is noisy and can push the generation in conflicting directions. As illustrated in Fig. 3, this leads to instability such as misaligned poses or rapid oscillations in viewpoint.
+
+To address this, we perform asynchronous sampling, in which we decompose the timesteps for image latents and camera rays. Concretely, we denoise the camera pose more quickly (i.e., use a shorter schedule for pose updates) so that a stable viewpoint is established early on, reducing the risk of inconsistent updates to the scene (see Fig. 4 for how this schedule is arranged).
+
+In practice, we define two learned modules for image and pose, respectively, with a single text prompt. We train them via a joint denoising objective to preserve consistency between the evolving image and the evolving pose. Because the camera pose is denoised more aggressively, it stabilizes sooner, guiding the image generation toward more coherent multi-view samples. We further enhance this process using a strategy similar to classifier-free guidance (CFG) for the pose when it is nearly resolved, treating it as an approximately unconditional prior. This stabilizes the viewpoint while the images continue to refine.
+</p>
+         
+      <img src="files/asynchronous_sampling.png" style="width: 100%" />
         
-      <img src="files/algo.png" style="width: 100%" />
-           
-      <p class="excerpt"> Our geometric steering builds on Feymann-Kac Steering which resamples particles to guide the data distribution toward high reward samples. By incorporating geometric rewards, we iteratively tilt the data distribution to generate geometrically aligned samples using any video generative model.</p>
-       
     </div>
 
     <p class="excerpt"></p>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
 
-    <div
-      id="wrapper"
-      style="
+    <div id="wrapper" style="
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         gap: 2em;
-      "
-    >
+      ">
       
     </div>
   </div>
+</div></div>
 </div>
+
+          
+
+          
+
+          
+          
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+      <div class="even-priority">
+        
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-left"><div class="container">
+  <div class="content">
+    
+    <h3 class="title">Main Results</h3>
+    
+    <div id="wrapper" style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      ">
+         
+      <p class="excerpt">Our main result is that VideoRFSplat outperforms existing text-to-3D direct generation methods that heavily depend on post-hoc refinement via score distillation sampling, achieving superior results without such refinement. We also validate the effectiveness of our proposed dual-stream architecture and asynchronous sampling strategy in improving the joint distribution modeling of multi-view images and camera poses for text-to-3D generation (Please see our paper!).</p>
+         
+      <img src="files/results.png" style="width: 100%" />
+        
+    </div>
+
+    <p class="excerpt"></p>
+
+    <div id="wrapper" style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      ">
+      
+    </div>
+
+    <div id="wrapper" style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      ">
+      
+    </div>
+  </div>
+</div></div>
 </div>
-</div>
+
+          
 
           
 
