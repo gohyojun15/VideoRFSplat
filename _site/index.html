@@ -1,0 +1,722 @@
+<!doctype html>
+<head>
+
+  <!-- Meta -->
+  <meta charset="utf-8">
+
+  <title>VideoRFSplat: Direct Scene-Level Text-to-3D Gaussian Splatting Generation with Flexible Pose and Multi-View Joint Modeling </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="VideoRFSplat: Direct Scene-Level Text-to-3D Gaussian Splatting Generation with Flexible Pose and Multi-View Joint Modeling" href="http://localhost:4000/feed.xml">
+  <link rel="alternate" type="application/atom+xml" title="VideoRFSplat: Direct Scene-Level Text-to-3D Gaussian Splatting Generation with Flexible Pose and Multi-View Joint Modeling" href="http://localhost:4000/atom.xml">
+
+  <!-- Favicons -->
+  <link rel="icon" href="http://localhost:4000/img/favicon.png">
+
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700|Merriweather:400,300,300italic,400italic,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/VideoRFSplat/css/animate.min.css">
+  <link rel="stylesheet" href="/VideoRFSplat/css/style.css">
+
+  <style>
+    .divider {
+      border-right: 2px dashed #737373;
+      width: 2px;
+    }
+  </style>
+  <style>
+    .divider_horizontal {
+      border-top: 2px dashed #737373;
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+    }
+  </style>
+  <!-- Begin new styles from demos page -->
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    iframe {
+      border-radius: 0.5em;
+      width: 27.5em;
+      height: 27.5em;
+      border: none;
+      box-shadow: 0 0 1em 0em rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        width: 100%;
+        height: 30em;
+      }
+    }
+
+    a,
+    a:link {
+      color: #777;
+    }
+
+    /* Styles for the instruction icons and text */
+    .instructions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.2em;
+      text-align: center;
+      padding: 0.6em;
+    }
+
+    .instruction-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+      font-size: 1.2em;
+    }
+
+    .instruction-item img {
+      width: 36px;
+      height: 36px;
+    }
+
+    .instructions_small {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1em;
+      text-align: center;
+      padding: 0.5em;
+    }
+
+    .instruction-item_small {
+      display: flex;
+      align-items: center;
+      gap: 0.3em;
+      font-size: 1.0em;
+    }
+
+    .instruction-item_small img {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
+</head>
+<body class="">
+
+<div id="top">
+
+
+
+<div class="container">
+
+  <div class="row">
+    <embed src="img/simbol.svg" type="image/svg+xml" aria-label="심볼"
+      style="margin-top: 40px; right: 0; text-align: right; position: absolute" />
+    <div class="col-md-12">
+
+      <div class="hero-container">
+        <div class="hero-content">
+          <!-- logo -->
+          <div class="text-center">
+            <img src="/VideoRFSplat/img/logo.png" alt="" class="logo"
+              style="width: 150px; height: auto; margin-bottom: 10px" />
+          </div>
+
+          
+          <h1 class="text-center" style="width: 1217px; height: auto; font-size: 40px">
+            VideoRFSplat: Direct Scene-Level Text-to-3D Gaussian Splatting Generation with Flexible Pose and Multi-View Joint Modeling
+          </h1>
+          
+
+          </br>
+
+          <div class="text-center" style="font-size: 20px">
+            <!--  Hyojun Go<sup>1</sup>*,&nbsp;&nbsp;Byeongjun Park<sup>1, 2</sup>*,&nbsp;&nbsp;Hyelin Nam<sup>1</sup>,&nbsp;&nbsp;Byung-Hoon Kim<sup>1,3</sup>,&nbsp;&nbsp;Hyungjin Chung<sup>1&#8224</sup>,&nbsp;&nbsp;&nbsp;Changick Kim<sup>2&#8224</sup><br/><br/><sup>1</sup>EverEx&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>2</sup>KAIST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>3</sup>Yonsei University   -->
+            <div class="author-block">
+              <!-- Author List -->
+              <a href="https://gohyojun15.github.io/">
+                <span>Hyojun Go<sup>1*</sup></span>
+              </a>
+              <a href="https://byeongjun-park.github.io/">
+                <span>Byeongjun Park<sup>1,2*</sup></span>
+              </a>
+              <a href="https://hyelinnam.github.io/">
+                <span>Hyelin Nam<sup>1</sup></span>
+              </a>
+              <a href="https://egyptdj.notion.site/NAIPL-f6283de309a04223b1c04793f5a10ce1">
+                <span>Byung-Hoon Kim<sup>1,3</sup></span>
+              </a>
+              <a href="https://hyungjin-chung.github.io/">
+                <span>Hyungjin Chung<sup>1†</sup></span>
+              </a>
+              <a href="https://cilabs.kaist.ac.kr/members/professor">
+                <span>Changick Kim<sup>2†</sup></span>
+              </a>
+            </div></br>
+
+            <div class="author-block" style="font-size: 20px">
+              <span><sup>1</sup>EverEx</span>
+              <span><sup>2</sup>KAIST</span>
+              <span><sup>3</sup>Yonsei University</span>
+            </div></br>
+
+            <div class="author-block" style="font-size: 15px">
+              <span>(* : Equal Contribution, † : Corresponding Author)</span>
+            </div>
+          </div>
+
+          <div class="hero-buttons">
+            <a href="https://arxiv.org/abs/2503.12024"><button class="btn btn-default btn-lg">
+                <svg style="width:24px;height:24px;margin-right:8px" viewBox="0 0 24 24">
+                  <path fill="currentColor"
+                    d="M16 0H8C6.9 0 6 .9 6 2V18C6 19.1 6.9 20 8 20H20C21.1 20 22 19.1 22 18V6L16 0M20 18H8V2H15V7H20V18M4 4V22H20V24H4C2.9 24 2 23.1 2 22V4H4M10 10V12H18V10H10M10 14V16H15V14H10Z">
+                  </path>
+                </svg>Paper
+              </button></a>
+            <a href="gallery_0.html"><button class="btn btn-default btn-lg">
+                <svg style="width:24px;height:24px;margin-right:8px" width="24px" height="24px" viewBox="0 0 375 531" ,
+                  fill="currentColor">
+                  <polygon stroke="currentColor" points="0.5,0.866 459.5,265.87 0.5,530.874 "></polygon>
+                </svg>Gallery
+              </button></a>
+            <a href="https://gohyojun15.github.io/VideoRFSplat"><button class="btn btn-default btn-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width:24px;height:24px;margin-right:8px"
+                  viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729
+                        1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322
+                        3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823
+                        2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z">
+                  </path>
+                </svg>Code
+              </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main id="portfolio">
+
+  <div class="row">
+    <div class="col-md-12">
+
+      
+      <h2 class="section-title text-center"></h2>
+      
+      
+      <p class="section-subtitle text-center"></p>
+      
+
+      <!-- sort posts with priority -->
+      
+      
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+        <div class="odd-priority">
+          
+
+          
+
+          
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-center">
+    <div class="container">
+  <div class="content">
+    
+      <h3 class="title">TL;DR: <strong>VideoRFSplat</strong> is a direct 3DGS generation model for real-world scenes from given text prompts, which leverages a video generation model's prior.</h3>
+    
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      "
+    >
+        
+      <img src="files/teasure.png" style="width: 100%" />
+        
+    </div>
+
+    <p class="excerpt"></p>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+          
+
+          
+          
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+      <div class="even-priority">
+        
+
+          
+
+          
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-center">
+    <div class="container">
+  <div class="content">
+    
+      <h3 class="title">Generated 3DGS</h3>
+    
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      "
+    >
+      
+    </div>
+
+    <p class="excerpt"></p>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+          
+
+          
+          <div class="content-wrap">
+    <div class="row post-row">
+        <div class="container">
+            <div class="content">
+                <div id="wrapper"
+                    style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/church-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A gothic cathedral with towering stained-glass windows, flickering
+                            candlelight illuminating ancient stone walls, and an ominous thunderstorm outside.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/city-viewer.html" style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A futuristic cyberpunk city at night, illuminated by neon signs, holographic
+                            billboards, towering skyscrapers.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/tree-viewer.html" style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A colossal, ancient tree with sprawling roots that intertwine with the ruins
+                            of an old temple, glowing runes carved into its bark.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row post-row">
+        <div class="container">
+            <div class="content">
+                <div id="wrapper"
+                    style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/mystery_desert-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A massive alien desert with shifting purple sands, floating rock formations,
+                            and a sky dominated by twin suns casting eerie shadows.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/medieval_town-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A medieval European village with cobblestone streets, timber-framed houses,
+                            and a grand stone castle in the distance, surrounded by lush green fields
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/underwater-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A mystical underwater kingdom with coral castles, bioluminescent sea
+                            creatures, and shimmering schools of fish swimming through ancient ruins.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row post-row">
+        <div class="container">
+            <div class="content">
+                <div id="wrapper"
+                    style="display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 20px; text-align: center;">
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/desert-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A serene desert landscape with rolling sand dunes, scattered cacti, and a
+                            warm golden sunset casting long shadows across the terrain.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/space_station-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A high-tech spaceship cockpit filled with holographic control panels, sleek
+                            metallic surfaces, and a panoramic view of distant galaxies.
+                        </p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="files/videorfsplat/japan_garden-viewer.html"
+                            style="width: 375px; height: 375px;"></iframe>
+                        <p class="excerpt">A tranquil Japanese temple garden with cherry blossoms in full bloom, stone
+                            lanterns lining a peaceful koi pond, and the distant chime of wind bells.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+          
+          
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+        <div class="odd-priority">
+          
+
+          
+
+          
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-center">
+    <div class="container">
+  <div class="content">
+    
+      <h3 class="title">Abstract</h3>
+    
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      "
+    >
+      
+    </div>
+
+    <p class="excerpt">We propose VideoRFSplat, a direct text-to-3D model leveraging a video generation model to generate realistic 3D Gaussian Splatting (3DGS) for unbounded real-world scenes. To generate diverse camera poses and unbounded spatial extent of real-world scenes, while ensuring generalization to arbitrary text prompts, previous methods fine-tune 2D generative models to jointly model camera poses and multi-view images. However, these methods suffer from instability when extending 2D generative models to joint modeling due to the modality gap, which necessitates additional models to stabilize training and inference. In this work, we propose an architecture and a sampling strategy to jointly model multi-view images and camera poses when fine-tuning a video generation model. Our core idea is a dual-stream architecture that attaches a dedicated pose generation model alongside a pre-trained video generation model via communication blocks, generating multi-view images and camera poses through separate streams. This design reduces interference between the pose and image modalities. Additionally, we propose an asynchronous sampling strategy that denoises camera poses faster than multi-view images, allowing rapidly denoised poses to condition multi-view generation, reducing mutual ambiguity and enhancing cross-modal consistency. Trained on multiple large-scale real-world datasets (RealEstate10K, MVImgNet, DL3DV-10K, ACID), VideoRFSplat outperforms existing text-to-3D direct generation methods that heavily depend on post-hoc refinement via score distillation sampling, achieving superior results without such refinement.</p>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+          
+
+          
+          
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+      <div class="even-priority">
+        
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-left"><div class="container">
+  <div class="content">
+    
+      <h3 class="title">Geometric Rewards</h3>
+    
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      "
+    >
+        
+      <img src="files/overview.jpg" style="width: 100%" />
+           
+      <p class="excerpt"> Our reward functions assess the geometric consistency of intermediate generated video frames by computing the feature similarity of upscaled DINO features. (a) GS-MEt3R evaluates feature similarity between the original video frames and their corresponding rendered images from 3DGS. (b) Dyn-MEt3R unprojects background features from half of the video frames and reprojecting them onto the remaining frames to compute feature similarity.</p>
+       
+    </div>
+
+    <p class="excerpt"></p>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+          
+
+          
+
+          
+
+          
+          
+      <!-- if priority is even and odd, change color -->
+      
+      
+
+
+      
+        <div class="odd-priority">
+          
+
+          
+
+          
+          <div class="content-wrap">
+  <div class="row post-row text-right"><div class="container">
+  <div class="content">
+    
+      <h3 class="title">Geometric Steering</h3>
+    
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+      "
+    >
+        
+      <img src="files/algo.png" style="width: 100%" />
+           
+      <p class="excerpt"> Our geometric steering builds on Feymann-Kac Steering which resamples particles to guide the data distribution toward high reward samples. By incorporating geometric rewards, we iteratively tilt the data distribution to generate geometrically aligned samples using any video generative model.</p>
+       
+    </div>
+
+    <p class="excerpt"></p>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+
+    <div
+      id="wrapper"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 2em;
+      "
+    >
+      
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+          
+
+          
+
+          
+          
+
+          <!--  -->
+        </div>
+      </div>
+    </div>
+</main>
+
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-2 col-md-offset-1">
+            <p class="text-muted text-left "><a href="http://localhost:4000">© 2025 EverEx</a></p>
+          </div>
+
+          <div class="col-xs-12 col-md-6 col-md-offset-2">
+            <a class="section-jump" href="#top">
+              <i class="fa fa-angle-up fa-3x"></i>
+            </a>
+          </div>
+        </div>
+      </div>    
+    </footer>
+  </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="http://localhost:4000/js/wow.min.js"></script>
+    <script src="http://localhost:4000/js/app.js"></script>
+
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', ' G-V6YLDPZ550', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    </body>
+</html>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>VideoRFSplat: Direct Scene-Level Text-to-3D Gaussian Splatting Generation with Flexible Pose and Multi-View Joint Modeling</title>
+ <link href="http://localhost:4000/atom.xml" rel="self"/>
+ <link href="http://localhost:4000/"/>
+ <updated>2025-03-20T01:33:50+09:00</updated>
+ <id>http://localhost:4000</id>
+ <author>
+   <name>EverEx</name>
+   <email></email>
+ </author>
+
+ 
+ <entry>
+   <title>Geometric Steering</title>
+   <link href="http://localhost:4000/media/2025/03/11/d.html"/>
+   <updated>2025-03-11T00:00:00+09:00</updated>
+   <id>http://localhost:4000/media/2025/03/11/d</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Geometric Rewards</title>
+   <link href="http://localhost:4000/media/2025/03/11/c.html"/>
+   <updated>2025-03-11T00:00:00+09:00</updated>
+   <id>http://localhost:4000/media/2025/03/11/c</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Abstract</title>
+   <link href="http://localhost:4000/texts/2025/03/11/b.html"/>
+   <updated>2025-03-11T00:00:00+09:00</updated>
+   <id>http://localhost:4000/texts/2025/03/11/b</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Generated 3DGS</title>
+   <link href="http://localhost:4000/media/2025/03/11/a_result.html"/>
+   <updated>2025-03-11T00:00:00+09:00</updated>
+   <id>http://localhost:4000/media/2025/03/11/a_result</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+ <entry>
+   <title>TL;DR: <strong>VideoRFSplat</strong> is a direct 3DGS generation model for real-world scenes from given text prompts, which leverages a video generation model's prior.</title>
+   <link href="http://localhost:4000/media/2025/03/11/a.html"/>
+   <updated>2025-03-11T00:00:00+09:00</updated>
+   <id>http://localhost:4000/media/2025/03/11/a</id>
+   <content type="html">
+</content>
+ </entry>
+ 
+
+</feed>
