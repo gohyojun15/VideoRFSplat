@@ -19,7 +19,7 @@ description: "Hyojun Go<sup>1</sup>*,&nbsp;&nbsp;Byeongjun Park<sup>1, 2</sup>*,
 baseurl: "/VideoRFSplat" # the subpath of your site, e.g. /blog
 url: "https://gohyojun15.github.io" # the base hostname & protocol for your site, e.g. https://example.com
 paper: 'https://arxiv.org/abs/2503.12024'
-github_username: 'https://gohyojun15.github.io/VideoRFSplat'
+github_username: 'https://github.com/gohyojun15/VideoRFSplat'
 
 # Build settings
 markdown: kramdown
