@@ -1,4 +1,4 @@
-# VideoRFSplat
+# VideoRFSplat (ICCV 2025)
 
 <a href="https://arxiv.org/abs/2503.15855"><img src="https://img.shields.io/badge/arXiv-2503.15855-b31b1b.svg"></a>
 <a href="https://gohyojun15.github.io/VideoRFSplat/"><img src="https://img.shields.io/badge/Project%20Page-online-brightgreen"></a>
